@@ -1,5 +1,5 @@
 # Report
-## 안동대학교 컴퓨터공학과 20171138 
+## 안동대학교 컴퓨터공학과 20171138 허민재
 ```
 from google.colab import files
 uploaded = files.upload() # 파일 업로드 기능 실행
