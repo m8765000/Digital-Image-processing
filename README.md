@@ -13,6 +13,7 @@ from IPython.display import Image
 Image('minjae.PNG') #이미지 보기
 ```
 
+```
 TF-2 및 모든 관련 종속성 가져 오기
 
 import functools
@@ -109,10 +110,9 @@ stylized_image = outputs[0]
 # Visualize input images and the generated stylized image.
 
 show_n([content_image, style_image, stylized_image], titles=['Original content image', 'Style image', 'Stylized image'])
-
-
-
 ```
+
+
 ## 리포트 소감 
 * 교수님 영상처리 수업이 재미 있습니다.
 * 열심히 공부해서 A+을 목표로 하겠습니다.
