@@ -1,5 +1,5 @@
-#Report
-##안동대학교 컴퓨터공학과 20171138 
+# Report
+## 안동대학교 컴퓨터공학과 20171138 
 ```
 from google.colab import files
 uploaded = files.upload() # 파일 업로드 기능 실행
@@ -114,6 +114,6 @@ show_n([content_image, style_image, stylized_image], titles=['Original content i
 
 ```
 ## 리포트 소감 
-*교수님 영상처리 수업이 재미 있습니다.
-*열심히 공부해서 A+을 목표로 하겠습니다.
+* 교수님 영상처리 수업이 재미 있습니다.
+* 열심히 공부해서 A+을 목표로 하겠습니다.
 
