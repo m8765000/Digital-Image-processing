@@ -13,6 +13,7 @@ from IPython.display import Image
 Image('minjae.PNG') #이미지 보기
 ```
 
+TF-2 및 모든 관련 종속성 가져 오기
 
 import functools
 import os
@@ -27,6 +28,7 @@ print("TF Version: ", tf.__version__)
 print("TF-Hub version: ", hub.__version__)
 print("Eager mode enabled: ", tf.executing_eagerly())
 print("GPU available: ", tf.test.is_gpu_available())
+
 # @title Define image loading and visualization functions  { display-mode: "form" }
 
 def crop_center(image):
@@ -67,10 +69,13 @@ def show_n(images, titles=('',)):
     plt.title(titles[i] if len(titles) > i else '')
   plt.show()
 
-  # @title Load example images  { display-mode: "form" }
 
-content_image_url = 'https://postfiles.pstatic.net/MjAyMDExMDJfOTQg/MDAxNjA0MjgzOTU2OTgz.hWs8M9rzZmEEpxyBS_xmA5Y_4qVWFUfqNOfgtg2yZDIg.DN2tDtPOM_7qbvrt49GuK-eN1aSjLop6TBgB8C_VS0kg.JPEG.soo_os/1392391841598-1.jpg?type=w2'  # @param {type:"string"}
-style_image_url = 'https://www.artinsight.co.kr/data/tmp/1912/20191210235617_eostfpur.jpg'  # @param {type:"string"}
+함께 놀 수있는 몇 가지 이미지도 함께 가져오기
+
+# @title Load example images  { display-mode: "form" }
+
+content_image_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Golden_Gate_Bridge_from_Battery_Spencer.jpg/640px-Golden_Gate_Bridge_from_Battery_Spencer.jpg'  # @param {type:"string"}
+style_image_url = 'https://upload.wikimedia.org/wikipedia/commons/0/0a/The_Great_Wave_off_Kanagawa.jpg'  # @param {type:"string"}
 output_image_size = 384  # @param {type:"integer"}
 
 # The content image size can be arbitrary.
@@ -85,14 +90,28 @@ style_image = load_image(style_image_url, style_img_size)
 style_image = tf.nn.avg_pool(style_image, ksize=[3,3], strides=[1,1], padding='SAME')
 show_n([content_image, style_image], ['Content image', 'Style image'])
 
+TF-Hub 모듈 가져 오기
+# Load TF-Hub module.
+
 hub_handle = 'https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2'
 hub_module = hub.load(hub_handle)
 
 outputs = hub_module(content_image, style_image)
 stylized_image = outputs[0]
+
+이미지 스타일 화 시연
+# Stylize content image with given style image.
+# This is pretty fast within a few milliseconds on a GPU.
+
 outputs = hub_module(tf.constant(content_image), tf.constant(style_image))
 stylized_image = outputs[0]
+
+# Visualize input images and the generated stylized image.
+
 show_n([content_image, style_image, stylized_image], titles=['Original content image', 'Style image', 'Stylized image'])
+
+
+
 ```
 ## 리포트 소감 
 *교수님 영상처리 수업이 재미 있습니다.
