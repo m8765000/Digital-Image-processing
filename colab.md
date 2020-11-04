@@ -5,7 +5,7 @@
 !pip install -q opencv-python
 !pip install -q git+https://github.com/tensorflow/docs
 ```
-
+imageio, opencv-python, git+https://github.com/tensorflow/docs 설치하는과정
 ```
 # TensorFlow and TF-Hub modules.
 from absl import logging
@@ -31,7 +31,7 @@ from IPython import display
 
 from urllib import request  # requires python3
 ```
-
+필요한 것들 import, numpy
 
 ```
 # Utilities to fetch videos from UCF101 dataset
@@ -93,7 +93,7 @@ def to_gif(images):
   imageio.mimsave('./animation.gif', converted_images, fps=25)
   return embed.embed_file('./animation.gif')
 ```
-
+ucf라는 대학교의 101개의 동영상 데이터 베이스
 
 ```
 # Get the kinetics-400 action labels from the GitHub repository.
@@ -102,7 +102,7 @@ with request.urlopen(KINETICS_URL) as obj:
   labels = [line.decode("utf-8").strip() for line in obj.readlines()]
 print("Found %d labels." % len(labels))
 ```
-
+400개의 라벨을 가져옴
 
 ```
 # Get the list of videos in the dataset.
@@ -120,19 +120,19 @@ for category, sequences in categories.items():
   summary = ", ".join(sequences[:2])
   print("%-20s %4d videos (%s, ...)" % (category, len(sequences), summary))
 ```
-
+ucf101 데이터세트를 가진다.
 
 ```
 # Get a sample cricket video.
 video_path = fetch_ucf_video("v_BenchPress_g01_c01.avi")
 sample_video = load_video(video_path)
 ```
-
+avi를 가져온다.
 
 ```
 sample_video.shape
 ```
-
+shape를 나타낸다.
 
 ```
 i3d = hub.load("https://tfhub.dev/deepmind/i3d-kinetics-400/1").signatures['default']
@@ -151,7 +151,7 @@ def predict(sample_video):
   for i in np.argsort(probabilities)[::-1][:5]:
     print(f"  {labels[i]:22}: {probabilities[i] * 100:5.2f}%")
 ```
-
+현재 것에 대한 탑5 행동예상을 해본다.
 
 ```
 !curl -O https://upload.wikimedia.org/wikipedia/commons/8/86/End_of_a_jam.ogv
@@ -166,9 +166,10 @@ video_path = "End_of_a_jam.ogv"
 ```
 to_gif(sample_video)
 ```
-
+영상출력
 
 ```
 predict(sample_video)
 ```
 
+탑5 행동예상 비율 출력
