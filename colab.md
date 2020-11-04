@@ -124,7 +124,7 @@ for category, sequences in categories.items():
 
 ```
 # Get a sample cricket video.
-video_path = fetch_ucf_video("v_CricketShot_g04_c05.avi")
+video_path = fetch_ucf_video("v_BenchPress_g01_c01.avi")
 sample_video = load_video(video_path)
 ```
 
